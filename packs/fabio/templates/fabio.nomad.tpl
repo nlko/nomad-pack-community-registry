@@ -29,6 +29,7 @@ job [[ template "job_name" . ]] {
       driver = "docker"
       config {
         image = "fabiolb/fabio:[[ .fabio.fabio_task_config.version ]]"
+        network_mode = "host"
         [[- if .fabio.fabio_group_network.ports ]]
         [[- $ports := keys .fabio.fabio_group_network.ports ]]
         ports = [[ $ports | toPrettyJson ]]
